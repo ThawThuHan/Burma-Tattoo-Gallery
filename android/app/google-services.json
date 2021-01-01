@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "768526944339",
+    "project_id": "burma-tattoo-gallery-5e743",
+    "storage_bucket": "burma-tattoo-gallery-5e743.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:768526944339:android:65eede1fbc5f48e2d5dea6",
+        "android_client_info": {
+          "package_name": "xyz.gaslightmedia.burma_tattoo_gallery"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "768526944339-mtm827c0tv9ho6gqbfpc4hg832m4cc4j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwPhvA0ZVnxrJHRz6_Tf3sWE0BZYoBC1Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "768526944339-mtm827c0tv9ho6gqbfpc4hg832m4cc4j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
