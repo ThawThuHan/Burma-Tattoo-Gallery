@@ -1,4 +1,5 @@
 import 'package:admob_flutter/admob_flutter.dart';
+import 'package:burma_tattoo_gallery/screens/ad_photoview.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
@@ -124,17 +125,23 @@ class _MyHomePageState extends State<MyHomePage> {
         children: [
           CarouselSlider(
             items: carouselImages.map((e) {
-              return Container(
-                width: MediaQuery.of(context).size.width,
-                margin: EdgeInsets.symmetric(horizontal: 5.0),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(12)),
-                  image: DecorationImage(
-                    image: AssetImage(e),
-                    fit: BoxFit.cover,
+              return GestureDetector(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => ADPhotoView(e)));
+                },
+                child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  margin: EdgeInsets.symmetric(horizontal: 5.0),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(12)),
+                    image: DecorationImage(
+                      image: AssetImage(e),
+                      fit: BoxFit.cover,
+                    ),
                   ),
+                  // child: Image.asset(e),
                 ),
-                // child: Image.asset(e),
               );
             }).toList(),
             options: CarouselOptions(

@@ -62,6 +62,9 @@ class _MyPhotoViewState extends State<MyPhotoView> {
                           PermissionStatus status = await permissionHandle();
                           if (status.isGranted) {
                             ApiCall.downloadFile(widget.tattoos[index].imgUrl);
+                            SnackBar snackbar =
+                                SnackBar(content: Text("Photo Saved!"));
+                            Scaffold.of(context).showSnackBar(snackbar);
                           }
                         },
                         child: Text('Save'))
