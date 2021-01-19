@@ -1,10 +1,13 @@
 import 'package:admob_flutter/admob_flutter.dart';
+import 'package:burma_tattoo_gallery/models/shopCategory_modal.dart';
 import 'package:burma_tattoo_gallery/screens/ad_photoview.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'screens/tattoo_gallery.dart';
@@ -25,17 +28,20 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   InterstitialAd newInterAd;
+  List<ShopCategoryModal> shopCategories = [];
 
   @override
   void initState() {
     Admob.initialize();
     newInterAd = AdManager.myInterstitial;
     newInterAd.load();
+    shopCategories = context.read<List<ShopCategoryModal>>();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    print(shopCategories[2].imgUrl);
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -171,11 +177,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     },
                   ))
               .toList()),
-          buildLabel("Shops"),
-          buildCategory(shopsCatagories
+          buildLabel("Tattoo Studio Location"),
+          buildCategory(shopCategories
               .map((e) => buildLabelWithImage(
                     e.name,
-                    e.image,
+                    e.imgUrl,
                     onTap: () {
                       newInterAd.show();
                       Navigator.push(
@@ -186,39 +192,18 @@ class _MyHomePageState extends State<MyHomePage> {
                                 )),
                       );
                     },
-                    isImageFile: true,
                   ))
               .toList()),
           AdmobBanner(
             adUnitId: AdManager.bannerAdUnitId,
             adSize: AdmobBannerSize.FULL_BANNER,
           ),
-          buildLabel("About Us"),
+          buildLabel("Contact Us"),
           Padding(
             padding: const EdgeInsets.only(left: 16.0),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                RichText(
-                  text: TextSpan(children: [
-                    TextSpan(
-                      text: "App Developed By Teambes Lab",
-                      style: TextStyle(
-                        color: Colors.blue,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18.0,
-                      ),
-                    ),
-                    TextSpan(
-                      text: "\ncopyright @ 2020 Teambeslab,",
-                      style: TextStyle(
-                        color: Colors.black,
-                        // fontWeight: FontWeight.bold,
-                        fontSize: 16.0,
-                      ),
-                    )
-                  ]),
-                ),
                 GestureDetector(
                   onTap: () {
                     _launchURL('https://www.facebook.com/teambeslab2020/');
@@ -226,6 +211,27 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: buildCustomIcon(
                     label: "Facebook",
                     icon: FontAwesomeIcons.facebookF,
+                    color: Colors.blue,
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    _launchURL('https://www.facebook.com/teambeslab2020/');
+                  },
+                  child: buildCustomIcon(
+                    label: "Twitter",
+                    icon: FontAwesomeIcons.twitter,
+                    color: Colors.blue,
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    _launchURL('https://www.facebook.com/teambeslab2020/');
+                  },
+                  child: buildCustomIcon(
+                    label: "TeambesLab",
+                    isImg: true,
+                    img: "assets/images/teambes.png",
                     color: Colors.blue,
                   ),
                 )
@@ -294,8 +300,9 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           child: Center(
               child: Text(
-            name,
-            style: TextStyle(
+            name.toUpperCase(),
+            textAlign: TextAlign.center,
+            style: GoogleFonts.audiowide(
               color: Colors.white,
               fontSize: 16.0,
               fontWeight: FontWeight.bold,
@@ -306,7 +313,8 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  buildCustomIcon({String label, IconData icon, Color color}) {
+  buildCustomIcon(
+      {String label, IconData icon, Color color, isImg = false, img}) {
     return Align(
       alignment: Alignment.centerLeft,
       child: Padding(
@@ -316,10 +324,13 @@ class _MyHomePageState extends State<MyHomePage> {
             CircleAvatar(
               radius: 26.0,
               backgroundColor: Colors.black26,
-              child: FaIcon(
-                icon,
-                color: color,
-              ),
+              backgroundImage: isImg ? AssetImage(img) : null,
+              child: isImg
+                  ? Container()
+                  : FaIcon(
+                      icon,
+                      color: color,
+                    ),
             ),
             Text(
               label,

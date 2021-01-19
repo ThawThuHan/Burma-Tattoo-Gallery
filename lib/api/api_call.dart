@@ -10,8 +10,8 @@ import '../models/tattoo_model.dart';
 
 class ApiCall {
   static Future<List<CategoryModel>> getData() async {
-    http.Response response = await http
-        .get("https://tattoo.movie7plus.me/wp-json/wp/v2/categories/");
+    http.Response response = await http.get(
+        "https://tattoo.movie7plus.me/wp-json/wp/v2/categories?per_page=30");
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body);
       List<CategoryModel> category = [];

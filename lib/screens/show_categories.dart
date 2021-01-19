@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../models/categories_model.dart';
 import 'tattoo_gallery.dart';
@@ -73,14 +74,16 @@ class ShowCategories extends StatelessWidget {
             borderRadius: BorderRadius.circular(24),
           ),
           child: Center(
-              child: Text(
-            name,
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 18.0,
-              fontWeight: FontWeight.bold,
+            child: Text(
+              name.toUpperCase(),
+              textAlign: TextAlign.center,
+              style: GoogleFonts.badScript(
+                color: Colors.white,
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          )),
+          ),
         ),
       ),
     );

@@ -1,3 +1,7 @@
+import 'package:burma_tattoo_gallery/api/firebase_helper.dart';
+import 'package:burma_tattoo_gallery/models/shopaddress_modal.dart';
+import 'package:google_fonts/google_fonts.dart';
+
 import '../items.dart';
 import 'package:flutter/material.dart';
 
@@ -11,21 +15,21 @@ class ShopAddress extends StatefulWidget {
 }
 
 class _ShopAddressState extends State<ShopAddress> {
-  List<ShopLocation> shops = [];
+  // List<ShopLocation> shops = [];
 
-  @override
-  void initState() {
-    shopByName();
-    super.initState();
-  }
+  // @override
+  // void initState() {
+  //   shopByName();
+  //   super.initState();
+  // }
 
-  shopByName() {
-    shopLocation.forEach((e) {
-      if (e.city == widget.city) {
-        shops.add(e);
-      }
-    });
-  }
+  // shopByName() {
+  //   shopLocation.forEach((e) {
+  //     if (e.city == widget.city) {
+  //       shops.add(e);
+  //     }
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -44,47 +48,57 @@ class _ShopAddressState extends State<ShopAddress> {
         backgroundColor: Colors.transparent,
         elevation: 0.0,
       ),
-      body: ListView.builder(
-        itemBuilder: (context, index) {
-          if (shops.isEmpty) {
-            return Center(
-              child: CircularProgressIndicator(),
+      body: FutureBuilder<List<ShopModal>>(
+          future: FireHelper.getShopList(widget.city.toLowerCase()),
+          builder: (context, snapshot) {
+            if (!snapshot.hasData) {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+            List<ShopModal> shopList = snapshot.data;
+            return ListView.builder(
+              itemBuilder: (context, index) {
+                final shop = shopList[index];
+                return Card(
+                  elevation: 4.0,
+                  color: Colors.white70,
+                  child: buildTextColumn(shop.name, shop.address, shop.phone),
+                );
+              },
+              itemCount: shopList.length,
             );
-          }
-          return Card(
-            child: buildTextColumn(
-                shops[index].name, shops[index].address, shops[index].phone),
-          );
-        },
-        itemCount: shops.length,
-      ),
+          }),
     );
   }
 
   buildTextColumn(String name, String address, String phone) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(16.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             name,
-            style: TextStyle(
+            style: GoogleFonts.tauri(
               fontWeight: FontWeight.bold,
               fontSize: 18.0,
             ),
           ),
-          Text(
-            address,
-            style: TextStyle(
-              // fontWeight: FontWeight.bold,
-              fontSize: 18.0,
+          Padding(
+            padding: const EdgeInsets.only(top: 8.0),
+            child: Text(
+              address,
+              style: GoogleFonts.deliusSwashCaps(
+                fontWeight: FontWeight.bold,
+                fontSize: 18.0,
+              ),
             ),
           ),
           Text(
             phone,
-            style: TextStyle(
-              // fontWeight: FontWeight.bold,
+            style: GoogleFonts.deliusSwashCaps(
+              fontWeight: FontWeight.bold,
               fontSize: 16.0,
             ),
           ),

@@ -6,25 +6,6 @@ final List<String> carouselImages = [
   'assets/images/5.png',
 ];
 
-List<Catalogue> catalogueImages = [
-  Catalogue(
-      name: 'TRIBAL (aka Polynesian)', image: 'assets/catalogue/tribal.jpg'),
-  Catalogue(
-      name: 'JAPANESE (aka Irezumi)',
-      image: 'assets/catalogue/japaneseakaIrezumi.jpg'),
-  Catalogue(
-      name: 'AMERICAN (TRADITIONAL)',
-      image: 'assets/catalogue/americantraditional.jpg'),
-  Catalogue(
-      name: 'BURMESE (TRADITIONAL)',
-      image: 'assets/catalogue/burmesetraditional.jpg'),
-  Catalogue(name: 'REALISM', image: 'assets/catalogue/realism.jpg'),
-  Catalogue(name: 'NEW SCHOOL', image: 'assets/catalogue/newschool.jpeg'),
-  Catalogue(name: 'BIOMECHANICAL', image: 'assets/catalogue/biomechanical.jpg'),
-  Catalogue(name: 'WATERCOLOR', image: 'assets/catalogue/watercolor.jpg'),
-  Catalogue(name: 'TRASH POLKA', image: 'assets/catalogue/trashpolka.jpg'),
-];
-
 List<ShopLocation> shopLocation = [
   ShopLocation(
     name: 'BOOM Tattoo And Piercing',
