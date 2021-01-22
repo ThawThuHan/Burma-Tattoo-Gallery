@@ -177,6 +177,9 @@ class _MyHomePageState extends State<MyHomePage> {
                     },
                   ))
               .toList()),
+          SizedBox(
+            height: 15.0,
+          ),
           buildLabel("Tattoo Studio Location"),
           buildCategory(shopCategories
               .map((e) => buildLabelWithImage(
@@ -206,7 +209,7 @@ class _MyHomePageState extends State<MyHomePage> {
               children: [
                 GestureDetector(
                   onTap: () {
-                    _launchURL('https://www.facebook.com/teambeslab2020/');
+                    _launchURL('https://m.facebook.com/teambeslab2020/');
                   },
                   child: buildCustomIcon(
                     label: "Facebook",
@@ -216,7 +219,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    _launchURL('https://www.facebook.com/teambeslab2020/');
+                    _launchURL('https://twitter.com/TeambesL?s=20');
                   },
                   child: buildCustomIcon(
                     label: "Twitter",
@@ -226,7 +229,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    _launchURL('https://www.facebook.com/teambeslab2020/');
+                    _launchURL('https://m.facebook.com/teambeslab2020/');
                   },
                   child: buildCustomIcon(
                     label: "TeambesLab",
@@ -322,7 +325,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           children: [
             CircleAvatar(
-              radius: 26.0,
+              radius: 20.0,
               backgroundColor: Colors.black26,
               backgroundImage: isImg ? AssetImage(img) : null,
               child: isImg

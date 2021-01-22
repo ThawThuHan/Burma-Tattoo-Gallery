@@ -2,7 +2,6 @@ import 'package:burma_tattoo_gallery/api/firebase_helper.dart';
 import 'package:burma_tattoo_gallery/models/shopaddress_modal.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../items.dart';
 import 'package:flutter/material.dart';
 
 class ShopAddress extends StatefulWidget {

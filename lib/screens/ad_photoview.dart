@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view.dart';
 
 class ADPhotoView extends StatelessWidget {
-  String e;
+  final String e;
 
   ADPhotoView(this.e);
 

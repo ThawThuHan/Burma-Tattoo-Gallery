@@ -1,5 +1,3 @@
-import 'package:burma_tattoo_gallery/services/ad_manager.dart';
-import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:photo_view/photo_view.dart';

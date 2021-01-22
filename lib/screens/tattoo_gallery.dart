@@ -60,8 +60,12 @@ class TattooGallery extends StatelessWidget {
                   padding: EdgeInsets.all(4.0),
                   child: thumbnail == null
                       ? Container()
-                      : Image(
-                          image: NetworkImage('$thumbnail}'),
+                      : Card(
+                          elevation: 4.0,
+                          child: Image(
+                            fit: BoxFit.cover,
+                            image: NetworkImage('$thumbnail}'),
+                          ),
                         ),
                 ),
               );

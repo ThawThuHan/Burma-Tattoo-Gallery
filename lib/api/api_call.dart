@@ -5,7 +5,6 @@ import 'package:http/http.dart' as http;
 import 'package:uuid/uuid.dart';
 import 'package:ext_storage/ext_storage.dart';
 import '../models/categories_model.dart';
-import '../models/shopaddress_modal.dart';
 import '../models/tattoo_model.dart';
 
 class ApiCall {
